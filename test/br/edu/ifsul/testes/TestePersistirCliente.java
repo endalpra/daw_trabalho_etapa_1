@@ -2,6 +2,8 @@ package br.edu.ifsul.testes;
 
 import br.edu.ifsul.jpa.EntityManagerUtil;
 import br.edu.ifsul.modelo.Cliente;
+import br.edu.ifsul.modelo.Convenio;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import org.junit.After;
@@ -34,11 +36,11 @@ public class TestePersistirCliente {
         boolean exception = false;
         try {
             Cliente c = new Cliente();
-            c.setCep("99010140");
-            c.setEmail("ana@hotmail.com");
-            c.setEndereco("AV. Brasil 257");
-            c.setNome("Ana das Neves");                 
-            
+            c.setCep("99010234");
+            c.setEmail("joana@gmail.com");
+            c.setEndereco("AV. Fagundes 257");
+            c.setNome("Joanna das Neves");                 
+            //c.setConvenios((List<Convenio>) em.find(Convenio.class, 1));
             em.getTransaction().begin();
             em.persist(c);
             em.getTransaction().commit();

@@ -25,7 +25,7 @@ import org.hibernate.validator.constraints.NotBlank;
  * @author Érico
  */
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.JOINED)//Usado para permitir que forneça herança
 @Table(name = "conta")
 public abstract class Conta implements Serializable {
 
@@ -35,7 +35,7 @@ public abstract class Conta implements Serializable {
     private Integer id;
 
     @NotBlank(message = "O número deve ser informado!")
-    @Length(min = 15, max = 25, message = "O número não pode ter enos dígitos que {min} e nem mais que {max}!")
+    @Length(min = 15, max = 25, message = "O número não pode ter menos dígitos que {min} e nem mais que {max}!")
     @Column(name = "nome", length = 25, nullable = false)
     private String numero;
 
