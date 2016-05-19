@@ -1,12 +1,18 @@
 package br.edu.ifsul.modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import org.hibernate.validator.constraints.Length;
@@ -45,6 +51,10 @@ public class Agencia implements Serializable {
     @Column(name = "endereco", nullable = false, length = 50)
     private String endereco;
 
+    @OneToMany(mappedBy = "agencia", cascade = CascadeType.ALL,
+            orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Conta> contas = new ArrayList<>();
+    
     public Agencia() {
     }
 
@@ -113,6 +123,14 @@ public class Agencia implements Serializable {
     @Override
     public String toString() {
         return "Agencia{" + "nome_gerente=" + nome_gerente + ", numero=" + numero + '}';
+    }
+
+    public List<Conta> getContas() {
+        return contas;
+    }
+
+    public void setContas(List<Conta> contas) {
+        this.contas = contas;
     }
 
 }

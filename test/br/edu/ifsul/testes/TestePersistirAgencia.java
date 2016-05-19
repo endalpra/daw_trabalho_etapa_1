@@ -37,10 +37,10 @@ public class TestePersistirAgencia {
         boolean exception = false;
         try {
             Agencia a = new Agencia();
-            a.setCep("99011234");
+            a.setCep("22011234");
             a.setEndereco("Rua dos Andrades 1243");
-            a.setNome_gerente("Joana Brasil");
-            a.setNumero("234354");
+            a.setNome_gerente("Pedro Rosa");
+            a.setNumero("334354");
             em.getTransaction().begin();
             em.persist(a);
             em.getTransaction().commit();

@@ -38,7 +38,6 @@ public class TestePersistirConvenio {
         boolean exception = false;
         try {
             Convenio c = new Convenio();
-           //c.setClientes((List<Cliente>) em.find(Cliente.class, 1));
            c.setData_inicio(Calendar.getInstance());
            c.setNome("Saúde");
            c.setTaxa_mes(19.98);

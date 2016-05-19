@@ -68,7 +68,28 @@ public class Cliente implements Serializable {
             orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Telefone> telefones = new ArrayList<>();
 
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL,
+            orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Historico> historicos = new ArrayList<>();
+    
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL,
+            orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Seguro> seguros = new ArrayList<>();
+    
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL,
+            orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Conta> contas = new ArrayList<>();
+    
     public Cliente() {
+    }
+    
+    public void adicionarTelefone(Telefone obj){
+        obj.getTelefoneId().setCliente(this);
+        this.telefones.add(obj);
+    }
+    
+    public void removerTelefone(int index){
+        this.telefones.remove(index);
     }
 
     public String getNome() {
@@ -153,6 +174,30 @@ public class Cliente implements Serializable {
 
     public void setTelefones(List<Telefone> telefones) {
         this.telefones = telefones;
+    }
+
+    public List<Historico> getHistoricos() {
+        return historicos;
+    }
+
+    public void setHistoricos(List<Historico> historicos) {
+        this.historicos = historicos;
+    }
+
+    public List<Seguro> getSeguros() {
+        return seguros;
+    }
+
+    public void setSeguros(List<Seguro> seguros) {
+        this.seguros = seguros;
+    }
+
+    public List<Conta> getContas() {
+        return contas;
+    }
+
+    public void setContas(List<Conta> contas) {
+        this.contas = contas;
     }
   
 

@@ -42,7 +42,7 @@ public class TestePersistirTelefones {
          t.setTipo("Celular");
          //Número e Cliente compõe a chave primária composta de telefone
          id.setCliente(em.find(Cliente.class, 2));
-         id.setNumero(92876431);
+         id.setNumero(91876431);
          t.setTelefoneId(id);
         
        
